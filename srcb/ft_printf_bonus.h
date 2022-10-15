@@ -25,7 +25,7 @@ typedef struct t_list
 	int				p_space_len;
 	int				rtn;
 	t_bool			fconvert;
-	int				fnegative;
+	t_bool			fnegative;
 	t_bool			fplus;
 	int				fzero;
 	int				fdot;
