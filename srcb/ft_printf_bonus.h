@@ -35,6 +35,7 @@ typedef struct t_list
 	int				hexlen;
 	int				dlen;
 	int				ulen;
+	int				slen;
 }					t_printfb;
 
 int ft_printf(const char *str, ...);
@@ -63,5 +64,12 @@ void	ft_print_hexap(t_printfb *print);
 void	ft_print_hexap2(t_printfb *print);
 void	ft_print_unsigned(t_printfb *print);
 void	ft_print_unsigned2(t_printfb *print);
+void	ft_print_unsigned3(t_printfb *print, int *i);
+void	ft_print_unsigned4(t_printfb *print, int *i);
+void	ft_print_string(t_printfb *print);
+void	ft_print_string2(t_printfb *print);
+void	ft_print_char(t_printfb *print);
+void	ft_print_char2(t_printfb *print);
+
 
 #endif

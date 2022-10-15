@@ -15,15 +15,17 @@ void	ft_print_hexap(t_printfb *print)
 	{
 		ft_putchar_fd('0', 1);
 		i++;
+		print -> rtn++;
 	}
 	if(print -> pvalue != 0 || print -> fdot != 0)
 		decimal_to_hexa(print, print -> pvalue);
+	print -> rtn += print -> hexlen;
 	while (i + (print -> hexlen) < (print -> int_tmp) - (print -> fconvert ? 2:0))
 	{
 		ft_putchar_fd(' ', 1);
 		i++;
+		print -> rtn++;
 	}
-	print -> rtn += i + print -> hexlen;
 }
 
 void ft_print_hexap2(t_printfb *print)
@@ -37,21 +39,33 @@ void ft_print_hexap2(t_printfb *print)
 		print -> int_tmp = print -> fnum;
 	if((print -> fdot) > (print -> hexlen))
 	{
-		while (i++ < (print -> int_tmp) - (print -> fdot) - (print -> fconvert ? 2:0))
+		while (i < (print -> int_tmp) - (print -> fdot) - (print -> fconvert ? 2:0))
+		{
 			ft_putchar_fd(' ', 1);
+			i++;
+			print -> rtn++;
+		}
 		ft_print2(print);
 		while (print -> hexlen < print -> fdot--)
-			ft_putchar_fd('0', 1);
+			{
+				ft_putchar_fd('0', 1);
+				print -> rtn++;
+			}
 		if(print -> pvalue != 0 || print -> fdot != 0)
 			decimal_to_hexap(print, print -> pvalue);
+		print -> rtn += print -> hexlen;
 	}
 	else
 	{		
-		while (i++ < (print -> int_tmp) - (print -> hexlen) - (print -> fconvert ? 2:0))
+		while (i < (print -> int_tmp) - (print -> hexlen) - (print -> fconvert ? 2:0))
+		{
 			ft_putchar_fd(' ', 1);
+			i++;
+			print -> rtn++;
+		}
 		ft_print2(print);
 		if(print -> pvalue != 0 || print -> fdot != 0)
 			decimal_to_hexap(print, print -> pvalue);
+		print -> rtn += print -> hexlen;
 	}
-	print -> rtn += i + print -> hexlen;
 }

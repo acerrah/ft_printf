@@ -52,20 +52,22 @@ SRCS = ${addprefix ./libft/,${SRC}} \
 OBJS = ${SRCS:.c=.o}
 SRCSB = ${addprefix ./libft/,${SRC}} \
 		srcb/ft_check_arg.c \
+		srcb/ft_convert_to_hexa.c \
 		srcb/ft_flag_check.c \
 		srcb/ft_flag_check2.c \
-		srcb/ft_printf_bonus.c \
 		srcb/ft_len.c \
+		srcb/ft_printf_bonus.c \
 		srcb/ft_print.c \
 		srcb/ft_reset.c \
 		srcb/ft_print_hex.c \
 		srcb/ft_print_dec.c \
-		srcb/ft_convert_to_hexa.c \
 		srcb/ft_print_hexp.c \
-		srcb/ft_print_unsigned.c
+		srcb/ft_print_unsigned.c \
+		srcb/ft_print_string.c \
+		srcb/ft_print_char.c
+
 OBJS_B = ${SRCSB:.c=.o}
 NAME = libftprintf.a
-NAME_B = libftprintfb.a
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -g
 RM = rm -rf
@@ -73,14 +75,12 @@ LIBC = ar -rcs
 
 all: ${NAME}
 
-bonus: fclean ${NAME_B}
+bonus: fclean ${OBJS_B}
+	@${LIBC} ${NAME} ${OBJS_B}
+	@echo "<3 :3 uWu <3 :3"
 
 ${NAME}: ${OBJS}
 	@${LIBC} ${NAME} ${OBJS}
-	@echo "<3 :3 uWu <3 :3"
-
-${NAME_B} : ${OBJS_B}
-	@${LIBC} ${NAME_B} ${OBJS_B}
 	@echo "<3 :3 uWu <3 :3"
 
 .c.o:

@@ -11,7 +11,7 @@ void f_conv_neg(t_printfb *print, char *str, int *i)
 			(*i)++;
 	}
 
-	else if (str[*i] == '-')
+	if (str[*i] == '-')
 		{
 			(*i)++;
 			print -> fnegative = TRUE;
@@ -26,7 +26,7 @@ void	f_plus_zero(t_printfb *print, char *str, int *i)
 		(*i)++;
 	}
 
-	else if (str[*i] == '0')
+	if (str[*i] == '0')
 	{
 		(*i)++;
 		print -> int_tmp = *i;
@@ -51,7 +51,7 @@ void f_dot_space(t_printfb *print, char *str, int *i)
 		free(print -> str_tmp);
 	}
 
-	else if(str[*i] == ' ')
+	if(str[*i] == ' ')
 	{
 		print -> fspace = TRUE;
 		(*i)++;

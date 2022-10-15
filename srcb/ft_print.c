@@ -69,29 +69,24 @@ void	ft_print(va_list arg,t_printfb *print)
 	}
 	else if(print -> format == 's')
 	{
-		if (print -> fnum > 0)
-			print -> int_tmp = print -> fnum;
-		else if (print -> fzero > 0)
-			print -> int_tmp = print -> fzero;
-		print -> str_tmp = va_arg(arg, char *);
-		if (print -> str_tmp == NULL)
-			print -> str_tmp = "(null)";
-		if (print -> int_tmp < (int)ft_strlen(print -> str_tmp))
-			print -> str_tmp = ft_substr(print -> str_tmp, 0, print -> int_tmp);
+		print -> string = va_arg(arg, char *);
+		if (print -> string == NULL)
+			print -> string = "(null)";
+		print -> slen = ft_strlen(print -> string);
+		if (print -> fnegative)
+			ft_print_string(print);
 		else
-		{
-			print -> int_tmp = print -> int_tmp - ft_strlen(print -> str_tmp);
-			print -> rtn += print -> int_tmp;
-			while (print -> int_tmp--)
-				ft_putchar_fd(' ', 1);
-		}
-		print -> rtn += ft_strlen(print -> str_tmp);
-		ft_putstr_fd(print -> str_tmp, 1);
+			ft_print_string2(print);
+	}
+	else if(print -> format == '%')
+	{
 	}
 	else if(print -> format == 'c')
 	{
-		print -> int_tmp = va_arg(arg, int);
-		ft_putchar_fd(print -> int_tmp, 1);
-		print -> rtn++;
+		print -> dvalue = va_arg(arg, int);
+		if (print -> fnegative)
+			ft_print_char(print);
+		else
+			ft_print_char2(print);
 	}
 }
