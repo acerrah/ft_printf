@@ -5,24 +5,32 @@ void    ft_print_string(t_printfb *print)
     int i;
 
     i = 0;
-    while (print -> fdot < print -> slen)
-    {
-        ft_putchar_fd(print -> string[print -> fdot], 1);
-        print-> fdot++;
-        print -> rtn++;
-    }
+    print -> int_tmp = 0;
     if (print -> fzero)
         print -> int_tmp = print -> fzero;
     else if (print -> fnum)
         print -> int_tmp = print -> fnum;
-    while (i++ < (print -> int_tmp) - ((print -> fdot > print -> slen) ? (print -> fdot):(print -> slen)))
+    if (print -> int_tmp < print -> fdot)
+        print -> fdot = print -> int_tmp;
+    if (print -> slen > print -> fdot && print -> fdotdot)
+        print -> slen = print -> fdot;
+    while (i < print -> slen && print -> string[i])
     {
-        if (print -> fnum)
-            ft_putchar_fd(' ', 1);
-        else
-            ft_putchar_fd('0', 1);
+        ft_putchar_fd(print -> string[i], 1);
+        i++;
+        print -> rtn++;
     }
-    print -> rtn += i - 1;
+    while (i < print -> fdot)
+    {
+        ft_putchar_fd(' ', 1);
+        i++;
+        print -> rtn++;
+    }
+    while (i++ < print -> int_tmp)
+    {
+        ft_putchar_fd(' ', 1);
+        print -> rtn++;
+    }
 }
 
 void    ft_print_string2(t_printfb *print)
@@ -30,11 +38,12 @@ void    ft_print_string2(t_printfb *print)
     int i;
 
     i = 0;
+    print -> int_tmp = 0;
     if (print -> fzero)
         print -> int_tmp = print -> fzero;
     else if (print -> fnum)
         print -> int_tmp = print -> fnum;
-    while (i < (print -> int_tmp) - ((print -> fdot > print -> slen) ? (print -> fdot):(print -> slen)))
+    while (i < (print -> int_tmp) - print -> slen)
     {
         if (print -> fzero)
             ft_putchar_fd('0', 1);
@@ -43,10 +52,11 @@ void    ft_print_string2(t_printfb *print)
         i++;
     }
     print -> rtn += i;
-    while (print -> fdot < print -> slen)
+    i = 0;
+    while (i < print -> slen)
     {
-        ft_putchar_fd(print -> string[print -> fdot], 1);
-        print-> fdot++;
+        ft_putchar_fd(print -> string[i], 1);
+        i++;
         print -> rtn++;
     }
 }

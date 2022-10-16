@@ -11,15 +11,8 @@ void	ft_print_hexa(t_printfb *print)
 	else if (print -> fnum)
 		print -> int_tmp = print -> fnum;
 	ft_print2(print);
-	while (i < (print -> fdot) - (print -> hexlen))
-	{
-		ft_putchar_fd('0', 1);
-		i++;
-		print -> rtn++;
-	}
-	if(print -> unsvalue != 0 || print -> fdot != 0)
-		decimal_to_hexa(print, print -> unsvalue);
-	print -> rtn += print -> hexlen;
+	if(print -> unsvalue != 0 || print -> fdot != 0 || print -> fdotdot == FALSE)
+		decimal_to_hexa(print, print -> unsvalue, print -> fdot);
 	while (i + (print -> hexlen) < (print -> int_tmp) - (print -> fconvert ? 2:0))
 	{
 		ft_putchar_fd(' ', 1);
@@ -39,41 +32,25 @@ void ft_print_hexa2(t_printfb *print)
 		print -> int_tmp = print -> fnum;
 	if((print -> fdot) > (print -> hexlen))
 	{
-		if (!print -> fdot)
-			ft_print2(print);
-		while (i++ < (print -> int_tmp) - (print -> fdot) - (print -> fconvert ? 2:0))
+		ft_print2(print);
+		while (i < (print -> fdot) - (print -> hexlen))
 		{
-			if (print -> fdot)
-				ft_putchar_fd(' ', 1);
-			else
-				ft_putchar_fd('0', 1);
+			ft_putchar_fd('0', 1);
+			i++;
 			print -> rtn++;
 		}
-		if (print -> fdot)
-			ft_print2(print);
-		while (print -> hexlen < print -> fdot--)
-			ft_putchar_fd('0', 1);
-		print -> rtn += print -> hexlen;
-		if(print -> unsvalue != 0 || print -> fdot != 0)
-			decimal_to_hexa(print, print -> unsvalue);
-		print -> rtn += print -> hexlen;
+		if(print -> unsvalue != 0 || print -> fdot != 0 || print -> fdotdot == FALSE)
+			decimal_to_hexa(print, print -> unsvalue, print -> fdot);
 	}
 	else
 	{
-		if (!print -> fdot)
-			ft_print2(print);
 		while (i++ < (print -> int_tmp) - (print -> hexlen) - (print -> fconvert ? 2:0))
 		{
-			if (print -> fdot)
 				ft_putchar_fd(' ', 1);
-			else
-				ft_putchar_fd('0', 1);
 			print -> rtn++;
 		}
-		if (print -> fdot)
-			ft_print2(print);
-		if(print -> unsvalue != 0 || print -> fdot != 0)
-			decimal_to_hexa(print, print -> unsvalue);
-		print -> rtn += print -> hexlen;
+		ft_print2(print);
+		if(print -> unsvalue != 0 || print -> fdot != 0 || print -> fdotdot == FALSE)
+			decimal_to_hexa(print, print -> unsvalue, print -> fdot);
 	}
 }

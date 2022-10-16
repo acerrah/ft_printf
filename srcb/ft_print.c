@@ -30,6 +30,11 @@ void	ft_print(va_list arg,t_printfb *print)
 	if(print -> format == 'd' || print -> format == 'i')
 	{
 		print -> dvalue = va_arg(arg, int);
+		if (print -> dvalue < 0)
+		{	
+			print -> dvalue *= -1;
+			print -> neg = TRUE;
+		}
 		print -> dlen = ft_decimal_len(print -> dvalue);
 		if (print -> fnegative)
 			ft_print_dec(print);
@@ -40,6 +45,8 @@ void	ft_print(va_list arg,t_printfb *print)
 	{
 		print -> unsvalue = va_arg(arg, unsigned int);
 		print -> hexlen = ft_hexa_x_len(print -> unsvalue);
+		if (print -> fdot < print -> hexlen)
+			print -> fdot = print -> hexlen;
 		if (print -> fnegative)
 			ft_print_hexa(print);
 		else
@@ -48,20 +55,20 @@ void	ft_print(va_list arg,t_printfb *print)
 	else if(print -> format == 'p')
 	{
 		print -> fconvert = TRUE;
-		print -> format = 'x';
-		print -> pvalue = va_arg(arg, unsigned long);
-		print -> hexlen = ft_hexa_x_len(print -> pvalue);
+		print -> format += 8;
+		print -> unsvalue = va_arg(arg, unsigned long);
+		print -> hexlen = ft_hexa_x_len(print -> unsvalue);
 		if (print -> fnegative)
-			ft_print_hexap(print);
+			ft_print_hexa(print);
 		else
-			ft_print_hexap2(print);
+			ft_print_hexa2(print);
 	}
 	else if(print -> format == 'u')
 	{
 		print -> fplus = FALSE;
 		print -> fspace = FALSE;
 		print -> unsvalue = va_arg(arg, unsigned int);
-		print -> hexlen = ft_unsigned_len(print -> unsvalue);
+		print -> ulen = ft_unsigned_len(print -> unsvalue);
 		if (print -> fnegative)
 			ft_print_unsigned(print);
 		else
@@ -73,6 +80,8 @@ void	ft_print(va_list arg,t_printfb *print)
 		if (print -> string == NULL)
 			print -> string = "(null)";
 		print -> slen = ft_strlen(print -> string);
+		if (print -> fdotdot && print -> fdot < print -> slen)
+			print -> slen = print -> fdot;
 		if (print -> fnegative)
 			ft_print_string(print);
 		else

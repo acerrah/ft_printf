@@ -61,7 +61,6 @@ SRCSB = ${addprefix ./libft/,${SRC}} \
 		srcb/ft_reset.c \
 		srcb/ft_print_hex.c \
 		srcb/ft_print_dec.c \
-		srcb/ft_print_hexp.c \
 		srcb/ft_print_unsigned.c \
 		srcb/ft_print_string.c \
 		srcb/ft_print_char.c

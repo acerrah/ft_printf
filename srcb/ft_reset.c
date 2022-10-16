@@ -20,4 +20,10 @@ void ft_reset(t_printfb *print)
 	print ->fspace = 0;
 	print ->format = 0;
 	print ->fnum = 0;
+	print ->fdotdot = 0;
+	print ->neg = 0;
+	print -> hexlen = 0;
+	print -> dlen = 0;
+	print -> ulen = 0;
+	print -> slen = 0;
 }	

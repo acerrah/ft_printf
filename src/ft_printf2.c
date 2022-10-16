@@ -8,7 +8,7 @@ void	check_one(va_list pars, t_printf *prnt)
 		ft_putchar_fd(prnt -> cvalue, 1);
 		prnt -> rtn = prnt -> rtn + 1;
 	}
-	else if (prnt -> flagstart == 's')
+	if (prnt -> flagstart == 's')
 	{
 		prnt -> string = va_arg(pars, char *);
 		if(!prnt -> string)
@@ -55,14 +55,14 @@ void	check_tree(va_list pars, t_printf *prnt)
 		prnt -> xval = va_arg(pars, unsigned int);
 		decimal_to_hexa(prnt,prnt -> xval);
 	}
-	else if(prnt -> flagstart == 'p')
+	if(prnt -> flagstart == 'p')
 	{
 		prnt -> pval = va_arg(pars,unsigned long);
 		ft_putstr_fd("0x", 1);
 		prnt -> rtn = prnt -> rtn + 2;
 		decimal_to_hexap(prnt,prnt -> pval);
 	}
-	else if(prnt -> flagstart == '%')
+	if(prnt -> flagstart == '%')
 	{
 		ft_putchar_fd('%', 1);
 		prnt -> rtn = prnt -> rtn + 1;
