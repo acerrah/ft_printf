@@ -8,6 +8,8 @@ int ft_decimal_len(int nb)
 
 	nbr = nb;
 	i = 0;
+	if (nbr == 0)
+		return (1);
 	if(nbr < 0)
 	{
 		nbr *= -1;
@@ -44,6 +46,8 @@ int ft_hexa_x_len(unsigned long nb)
 	int	i;
 
 	i = 0;
+	if (nb == 0)
+		return (1);
 	if(nb < 0)
 	{
 		nb *= -1;
@@ -62,6 +66,8 @@ int ft_hexa_p_len(unsigned long nb)
 	int	i;
 
 	i = 0;
+	if (nb == 0)
+		return (1);
 	if(nb < 0)
 	{
 		nb *= -1;

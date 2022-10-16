@@ -36,6 +36,7 @@ typedef struct t_list
 	int				dlen;
 	int				ulen;
 	int				slen;
+	t_bool			fdotdot;
 }					t_printfb;
 
 int ft_printf(const char *str, ...);

@@ -41,7 +41,8 @@ void	f_plus_zero(t_printfb *print, char *str, int *i)
 void f_dot_space(t_printfb *print, char *str, int *i)
 {
 	if (str[*i] == '.')
-	{		
+	{
+		print -> fdotdot = TRUE;
 		(*i)++;
 		print -> int_tmp = *i;
 		while (str[*i] <= '9' && str[*i] >= '0')
