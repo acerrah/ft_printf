@@ -49,7 +49,7 @@ void	f_num(t_printfb *print, char *str, int *i);
 void	ft_print(va_list arg, t_printfb *print);
 void 	ft_reset(t_printfb *print);
 int 	ft_hexa_p_len(unsigned long nb);
-int 	ft_hexa_x_len(unsigned int nb);
+int 	ft_hexa_x_len(unsigned long nb);
 int 	ft_decimal_len(int nb);
 int		ft_unsigned_len(unsigned int nb);
 void	ft_print2(t_printfb *print);

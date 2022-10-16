@@ -50,7 +50,7 @@ void	ft_print(va_list arg,t_printfb *print)
 		print -> fconvert = TRUE;
 		print -> format = 'x';
 		print -> pvalue = va_arg(arg, unsigned long);
-		print -> hexlen = ft_hexa_x_len(print -> unsvalue);
+		print -> hexlen = ft_hexa_x_len(print -> pvalue);
 		if (print -> fnegative)
 			ft_print_hexap(print);
 		else
