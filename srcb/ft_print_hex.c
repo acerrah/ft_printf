@@ -18,7 +18,7 @@ void	ft_print_hexa(t_printfb *print)
 		print -> rtn++;
 	}
 	if(print -> unsvalue != 0 || print -> fdot != 0 || !print -> fdotdot)
-		decimal_to_hexa(print, print -> unsvalue, print -> fdot);
+		ft_decimal_to_hex(print, print -> unsvalue, print -> fdot);
 	else if (!(print -> fdot == 0 && print -> dvalue == 0 && print -> fnum == 0 && print -> fzero == 0))
 	{
 		ft_putchar_fd(' ', 1);
@@ -59,7 +59,7 @@ void ft_print_hexa2(t_printfb *print)
 			print -> rtn++;
 		}
 		if(print -> unsvalue != 0 || print -> fdot != 0 || !print -> fdotdot)
-			decimal_to_hexa(print, print -> unsvalue, print -> fdot);
+			ft_decimal_to_hex(print, print -> unsvalue, print -> fdot);
 	}
 	else
 	{	
@@ -73,7 +73,7 @@ void ft_print_hexa2(t_printfb *print)
 		}
 		ft_print2(print);
 		if(print -> unsvalue != 0 || print -> fdot != 0 || !print -> fdotdot)
-			decimal_to_hexa(print, print -> unsvalue, print -> fdot);
+			ft_decimal_to_hex(print, print -> unsvalue, print -> fdot);
 		else if (!(print -> fdot == 0 && print -> dvalue == 0 && print -> fnum == 0 && print -> fzero == 0))
 		{
 			ft_putchar_fd(' ', 1);

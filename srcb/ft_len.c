@@ -41,7 +41,7 @@ int ft_unsigned_len(unsigned int nb)
 	return (i);
 }
 
-int ft_hexa_x_len(unsigned long nb)
+int ft_hex_x_len(unsigned long nb)
 {
 	int	i;
 

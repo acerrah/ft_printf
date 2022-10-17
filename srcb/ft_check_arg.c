@@ -30,7 +30,7 @@ void	ft_check_arg(const char *str, va_list arg, t_printfb *print)
 			j = i;
 			while (ft_check(*(str + j), "cspdiuxX%") == 1)
 				j++;
-			flag = ft_substr((str + i),0,j - i +1 );
+			flag = ft_substr((str + i), 0, j - i + 1);
 			flag_check(print, flag);
 			ft_print(arg, print);
 			free(flag);
@@ -43,5 +43,5 @@ void	ft_check_arg(const char *str, va_list arg, t_printfb *print)
 			print -> rtn++;
 		}
 		i++;
-	}
+	}	
 }

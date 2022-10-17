@@ -52,7 +52,7 @@ SRCS = ${addprefix ./libft/,${SRC}} \
 OBJS = ${SRCS:.c=.o}
 SRCSB = ${addprefix ./libft/,${SRC}} \
 		srcb/ft_check_arg.c \
-		srcb/ft_convert_to_hexa.c \
+		srcb/ft_convert_to_hex.c \
 		srcb/ft_flag_check.c \
 		srcb/ft_flag_check2.c \
 		srcb/ft_len.c \
@@ -63,7 +63,9 @@ SRCSB = ${addprefix ./libft/,${SRC}} \
 		srcb/ft_print_dec.c \
 		srcb/ft_print_unsigned.c \
 		srcb/ft_print_string.c \
-		srcb/ft_print_char.c
+		srcb/ft_print_char.c \
+		srcb/ft_check_format.c \
+		srcb/ft_check_format2.c
 
 OBJS_B = ${SRCSB:.c=.o}
 NAME = libftprintf.a

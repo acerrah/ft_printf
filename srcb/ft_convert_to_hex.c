@@ -1,7 +1,7 @@
 
 #include "ft_printf_bonus.h"
 
-void    decimal_to_hexa(t_printfb *print, unsigned long nb, long i)
+void    ft_decimal_to_hex(t_printfb *print, unsigned long nb, long i)
 {
 	char			*base1 = "0123456789abcdef";
 	char			*base2 = "0123456789ABCDEF";
@@ -10,7 +10,7 @@ void    decimal_to_hexa(t_printfb *print, unsigned long nb, long i)
 		if(nb >= 16 && (i > 0 || !print -> fdotdot))
 		{
 			i--;
-			decimal_to_hexa(print, nb / 16, i);
+			ft_decimal_to_hex(print, nb / 16, i);
 		}
 		ft_putchar_fd(base1[nb % 16], 1);
 		print -> rtn++;
@@ -20,7 +20,7 @@ void    decimal_to_hexa(t_printfb *print, unsigned long nb, long i)
 		if(nb >= 16 && (i > 0 || !print -> fdotdot))
 		{
 			i--;
-			decimal_to_hexa(print, nb / 16, i);
+			ft_decimal_to_hex(print, nb / 16, i);
 		}
 		ft_putchar_fd(base2[nb % 16], 1);
 		print -> rtn++;

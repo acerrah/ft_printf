@@ -38,7 +38,6 @@ void    ft_print_string2(t_printfb *print)
     int i;
 
     i = 0;
-    print -> int_tmp = 0;
     if (print -> fzero)
         print -> int_tmp = print -> fzero;
     else if (print -> fnum)

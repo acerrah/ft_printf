@@ -1,6 +1,24 @@
 
 #include "ft_printf_bonus.h"
 
+void	ft_print(va_list arg,t_printfb *print)
+{
+	if(print -> format == 'd' || print -> format == 'i')
+		ft_check_d(arg, print);
+	else if(print -> format == 'c')
+		ft_check_c(arg, print);
+	else if(print -> format == 's')
+		ft_check_s(arg, print);
+	else if(print -> format == 'p')
+		ft_check_p(arg, print);
+	else if(print -> format == 'u')
+		ft_check_u(arg, print);
+	else if(print -> format == 'x' || print -> format == 'X')
+		ft_check_x(arg, print);
+	else if(print -> format == '%')
+		ft_check_percent(print);
+}
+
 void ft_print2( t_printfb *print)
 {
 
@@ -22,88 +40,5 @@ void ft_print2( t_printfb *print)
 				ft_putstr_fd(" ", 1);
 			print -> rtn++;
 		}
-	}
-}
-
-void	ft_print(va_list arg,t_printfb *print)
-{
-	if(print -> format == 'd' || print -> format == 'i')
-	{
-		print -> dvalue = va_arg(arg, int);
-		if (print -> dvalue < 0)
-		{	
-			print -> dvalue *= -1;
-			print -> neg = TRUE;
-			print -> fplus = FALSE;
-			print -> fspace = FALSE;
-		}
-		print -> dlen = ft_decimal_len(print -> dvalue);
-		if (print -> fnegative)
-			ft_print_dec(print);
-		else
-			ft_print_dec2(print);
-	}
-	else if(print -> format == 'x' || print -> format == 'X')
-	{
-		print -> unsvalue = va_arg(arg, unsigned int);
-		if (print -> unsvalue == 0)
-			print -> fconvert = FALSE;
-		print -> hexlen = ft_hexa_x_len(print -> unsvalue);
-		if (print -> fdot == 0 && print -> unsvalue == 0)
-			print -> fdot = 0;
-		else if (print -> fdot < print -> hexlen)
-			print -> fdot = print -> hexlen;
-		if (print -> fnegative)
-			ft_print_hexa(print);
-		else
-			ft_print_hexa2(print);
-	}
-	else if(print -> format == 'p')
-	{
-		print -> fconvert = TRUE;
-		print -> format += 8;
-		print -> unsvalue = va_arg(arg, unsigned long);
-		print -> hexlen = ft_hexa_x_len(print -> unsvalue);
-		if (print -> fnegative)
-			ft_print_hexa(print);
-		else
-			ft_print_hexa2(print);
-	}
-	else if(print -> format == 'u')
-	{
-		print -> fplus = FALSE;
-		print -> fspace = FALSE;
-		print -> unsvalue = va_arg(arg, unsigned int);
-		print -> ulen = ft_unsigned_len(print -> unsvalue);
-		if (print -> fnegative)
-			ft_print_unsigned(print);
-		else
-			ft_print_unsigned2(print);		
-	}
-	else if(print -> format == 's')
-	{
-		print -> string = va_arg(arg, char *);
-		if (print -> string == NULL)
-			print -> string = "(null)";
-		print -> slen = ft_strlen(print -> string);
-		if (print -> fdotdot && print -> fdot < print -> slen)
-			print -> slen = print -> fdot;
-		if (print -> fnegative)
-			ft_print_string(print);
-		else
-			ft_print_string2(print);
-	}
-	else if(print -> format == '%')
-	{
-		ft_putchar_fd('%', 1);
-		print -> rtn++;
-	}
-	else if(print -> format == 'c')
-	{
-		print -> dvalue = va_arg(arg, int);
-		if (print -> fnegative)
-			ft_print_char(print);
-		else
-			ft_print_char2(print);
 	}
 }
