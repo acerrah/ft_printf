@@ -18,7 +18,7 @@ typedef struct t_list
 	char			*str_tmp;
 	char 			flagstart;
 	char			*flag;
-	long 			dvalue;
+	long			dvalue;
 	char 			*string;
 	unsigned long	unsvalue;
 	unsigned long	pvalue;

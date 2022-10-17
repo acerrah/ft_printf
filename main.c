@@ -4,7 +4,7 @@ int main()
 {
     char *s = 0;
 //ft_printf("b%06u\n", 1234); 
-   ft_printf(".%0.d.", 1);
+   ft_printf("%03.0x", 0);
 /*
 ft_printf("%-010.5d\n", 123);
 printf("%-010.5d\n", 123);

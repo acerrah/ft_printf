@@ -49,7 +49,9 @@ void	ft_print(va_list arg,t_printfb *print)
 		if (print -> unsvalue == 0)
 			print -> fconvert = FALSE;
 		print -> hexlen = ft_hexa_x_len(print -> unsvalue);
-		if (print -> fdot < print -> hexlen)
+		if (print -> fdot == 0 && print -> unsvalue == 0)
+			print -> fdot = 0;
+		else if (print -> fdot < print -> hexlen)
 			print -> fdot = print -> hexlen;
 		if (print -> fnegative)
 			ft_print_hexa(print);

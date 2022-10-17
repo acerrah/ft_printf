@@ -66,13 +66,13 @@ void ft_print_dec2(t_printfb *print)
 			ft_putchar_fd('-', 1);
 			print -> rtn++;
 		}
+		ft_print2(print);
 		while (i < (print -> fdot) - (int)(print -> fplus) - print -> dlen)
 		{
 				ft_putchar_fd('0', 1);
 				print -> rtn++;
 				i++;
 		}
-		ft_print2(print);
 		if(print -> dvalue != 0 || print -> fdot != 0 || !print -> fdotdot)
 		{
 			ft_putnbr_fd(print -> dvalue, 1);

@@ -33,7 +33,12 @@ void	ft_print_unsigned(t_printfb *print)
 	}
 	if(print -> unsvalue != 0 || print -> fdot != 0 || !print -> fdotdot)
 		ft_putunsigned(print -> unsvalue, 1, print);
-	while (i + print -> ulen < print -> int_tmp - (int)(print -> fplus))
+	else if (!(print -> fdot == 0 && print -> dvalue == 0 && print -> fnum == 0 && print -> fzero == 0))
+	{
+		ft_putchar_fd(' ', 1);
+		print -> rtn++;
+	}
+	while (i + print -> ulen < print -> int_tmp)
 	{
 		ft_putchar_fd(' ', 1);
 		i++;
@@ -58,12 +63,17 @@ void ft_print_unsigned2(t_printfb *print)
 
 void ft_print_unsigned3(t_printfb *print, int *i)
 {	
-	if (print -> fdot)
-		ft_print2(print);
-	while ((*i)++ < (print -> fdot) - (int)(print -> fplus) - print -> ulen)
+	while (print -> int_tmp > print -> fdot)
+	{
+		ft_putchar_fd(' ', 1);
+		print -> rtn++;
+		print -> int_tmp--;
+	}
+	while (*i < print -> fdot - print -> ulen)
 	{
 			ft_putchar_fd('0', 1);
 			print -> rtn++;
+			(*i)++;
 	}
 	if(print -> unsvalue != 0 || print -> fdot != 0 || !print -> fdotdot)
 		ft_putunsigned(print ->unsvalue, 1, print);
@@ -71,18 +81,19 @@ void ft_print_unsigned3(t_printfb *print, int *i)
 
 void ft_print_unsigned4(t_printfb *print, int *i)
 {
-	if (!print -> fdot)
-		ft_print2(print);
-	while ((*i)++ < (print -> int_tmp) - (print -> ulen) - (int)(print -> fplus))
+	while ((*i)++ < print -> int_tmp - print -> ulen)
 	{
-		if (print -> fdot)
-			ft_putchar_fd(' ', 1);
+		if (print -> fzero && !print -> fdotdot)
+				ft_putchar_fd('0', 1);
 		else
-			ft_putchar_fd('0', 1);
+			ft_putchar_fd(' ', 1);
 		print -> rtn++;
 	}
-	if (print -> fdot)
-		ft_print2(print);
 	if(print -> unsvalue != 0 || print -> fdot != 0 || !print -> fdotdot)
 		ft_putunsigned(print -> unsvalue, 1, print);
+	else if (!(print -> fdot == 0 && print -> dvalue == 0 && print -> fnum == 0 && print -> fzero == 0))
+	{
+		ft_putchar_fd(' ', 1);
+		print -> rtn++;
+	}
 }
