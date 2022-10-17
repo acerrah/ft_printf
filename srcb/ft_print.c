@@ -95,6 +95,8 @@ void	ft_print(va_list arg,t_printfb *print)
 	}
 	else if(print -> format == '%')
 	{
+		ft_putchar_fd('%', 1);
+		print -> rtn++;
 	}
 	else if(print -> format == 'c')
 	{
