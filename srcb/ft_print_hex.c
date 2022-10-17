@@ -43,10 +43,13 @@ void ft_print_hexa2(t_printfb *print)
 			decimal_to_hexa(print, print -> unsvalue, print -> fdot);
 	}
 	else
-	{
+	{	
 		while (i++ < (print -> int_tmp) - (print -> hexlen) - (print -> fconvert ? 2:0))
 		{
+			if (print -> fdotdot)
 				ft_putchar_fd(' ', 1);
+			else
+				ft_putchar_fd('0', 1);
 			print -> rtn++;
 		}
 		ft_print2(print);

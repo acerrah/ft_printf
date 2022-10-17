@@ -25,16 +25,13 @@ void	f_plus_zero(t_printfb *print, char *str, int *i)
 		print -> fplus = TRUE;
 		(*i)++;
 	}
-
 	if (str[*i] == '0')
 	{
-		(*i)++;
-		print -> int_tmp = *i;
 		while (str[*i] <= '9' && str[*i] >= '0')
+		{
+			print -> fzero = print -> fzero * 10 + (str[*i] - '0');
 			(*i)++;
-		print -> str_tmp = ft_substr(str, print -> int_tmp, *i - print -> int_tmp);
-		print -> fzero = ft_atoi(print -> str_tmp);
-		free(print -> str_tmp);
+		}
 	}
 }
 
@@ -44,14 +41,12 @@ void f_dot_space(t_printfb *print, char *str, int *i)
 	{
 		print -> fdotdot = TRUE;
 		(*i)++;
-		print -> int_tmp = *i;
 		while (str[*i] <= '9' && str[*i] >= '0')
+		{
+			print -> fdot = print -> fdot * 10 + (str[*i] - '0');
 			(*i)++;
-		print -> str_tmp = ft_substr(str, print -> int_tmp, *i - print -> int_tmp);
-		print -> fdot = ft_atoi(print -> str_tmp);
-		free(print -> str_tmp);
+		}
 	}
-
 	if(str[*i] == ' ')
 	{
 		print -> fspace = TRUE;
@@ -63,11 +58,10 @@ void f_num(t_printfb *print, char *str, int *i)
 {
 	if (str[*i] <= '9' && str[*i] >= '0')
 	{
-		print -> int_tmp = *i;
 		while (str[*i] <= '9' && str[*i] >= '0')
+		{
+			print -> fnum = print -> fnum * 10 + (str[*i] - '0');
 			(*i)++;
-		print -> str_tmp = ft_substr(str, print -> int_tmp, *i - print -> int_tmp);
-		print -> fnum = ft_atoi(print -> str_tmp);
-		free(print -> str_tmp);
+		}
 	}
 }

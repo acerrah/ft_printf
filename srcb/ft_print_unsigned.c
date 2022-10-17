@@ -75,7 +75,10 @@ void ft_print_unsigned4(t_printfb *print, int *i)
 		ft_print2(print);
 	while ((*i)++ < (print -> int_tmp) - (print -> ulen) - (int)(print -> fplus))
 	{
-		ft_putchar_fd(' ', 1);
+		if (print -> fdot)
+			ft_putchar_fd(' ', 1);
+		else
+			ft_putchar_fd('0', 1);
 		print -> rtn++;
 	}
 	if (print -> fdot)

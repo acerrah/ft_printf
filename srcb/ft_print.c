@@ -34,6 +34,8 @@ void	ft_print(va_list arg,t_printfb *print)
 		{	
 			print -> dvalue *= -1;
 			print -> neg = TRUE;
+			print -> fplus = FALSE;
+			print -> fspace = FALSE;
 		}
 		print -> dlen = ft_decimal_len(print -> dvalue);
 		if (print -> fnegative)
@@ -44,6 +46,8 @@ void	ft_print(va_list arg,t_printfb *print)
 	else if(print -> format == 'x' || print -> format == 'X')
 	{
 		print -> unsvalue = va_arg(arg, unsigned int);
+		if (print -> unsvalue == 0)
+			print -> fconvert = FALSE;
 		print -> hexlen = ft_hexa_x_len(print -> unsvalue);
 		if (print -> fdot < print -> hexlen)
 			print -> fdot = print -> hexlen;
