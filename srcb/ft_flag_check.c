@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_flag_check.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acerrah <acerrah@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/18 11:20:01 by acerrah           #+#    #+#             */
+/*   Updated: 2022/10/18 11:20:43 by acerrah          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf_bonus.h"
 
 int	check(char a, char const *set)
@@ -14,9 +26,9 @@ int	check(char a, char const *set)
 	return (0);
 }
 
-void flag_check(t_printfb *print, char *str)
+void	flag_check(t_printfb *print, char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])

@@ -1,25 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_check_arg.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acerrah <acerrah@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/18 11:19:13 by acerrah           #+#    #+#             */
+/*   Updated: 2022/10/18 11:20:47 by acerrah          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-int ft_check(char c, const char *str)
+int	ft_check(char c, const char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
-		if(str[i] == c)
+		if (str[i] == c)
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
+void	ft_putchar_fd1(char c, int fd, t_printfb *print)
+{
+	write(fd, &c, 1);
+	print->rtn++;
+}
+
 void	ft_check_arg(const char *str, va_list arg, t_printfb *print)
 {
-	size_t i;
-	size_t j;
-	char *flag;
+	size_t	i;
+	size_t	j;
+	char	*flag;
 
 	i = 0;
 	while (*(str + i))
@@ -38,10 +55,7 @@ void	ft_check_arg(const char *str, va_list arg, t_printfb *print)
 			i = j;
 		}
 		else
-		{
-			ft_putchar_fd(*(str + i),1);
-			print -> rtn++;
-		}
+			ft_putchar_fd1(*(str + i), 1, print);
 		i++;
-	}	
+	}
 }
